@@ -1,0 +1,665 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Cuan Bareng Fitstock AI</title>
+    <style>
+      body {
+        margin: 0;
+        font-family: "Poppins", sans-serif;
+        background-image: url("asset/Fitstock.webp");
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: center;
+        color: #fff;
+        line-height: 1.6;
+      }
+      header {
+        text-align: center;
+        padding: 60px 20px;
+      }
+      header img {
+        height: 40px;
+        margin: 0 15px;
+        vertical-align: middle;
+      }
+      header h1 {
+        margin-bottom: 20px;
+        font-size: 60px;
+        margin-top: 20px;
+        line-height: 1.2;
+      }
+      header p {
+        font-size: 24px;
+        color: #ffffff;
+        max-width: 850px;
+        margin: 10px auto 0;
+      }
+      section {
+        padding: 40px 20px 0px 20px;
+        max-width: 1100px;
+        margin: auto;
+      }
+      .hero img {
+        width: 100%;
+        border-radius: 10px;
+        margin-bottom: 30px;
+      }
+      .hero-title {
+        text-align: center;
+        font-size: 30px;
+        width: 700px;
+        margin: 10px auto 0;
+      }
+      .profit-grid {
+        margin-top: 20px;
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 20px;
+        padding: 20px 0;
+        justify-items: center;
+      }
+      .profit-grid img {
+        width: 100%;
+        max-width: 320px;
+        border-radius: 12px;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+      }
+      .profit-grid img:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+      }
+      .custom-card {
+        font-size: 24px;
+        color: #ffffff;
+        border-radius: 10px;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+        overflow: hidden;
+        margin: 20px auto;
+        transition: 0.3s;
+      }
+      .custom-card:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 6px 18px rgba(0, 0, 0, 0.1);
+      }
+      .card-row {
+        display: flex;
+        flex-wrap: nowrap;
+      }
+      .card-img {
+        flex: 0 0 30%;
+        display: flex;
+        align-items: center;
+      }
+      .card-img img {
+        width: 100%;
+        border-top-left-radius: 10px;
+        border-bottom-left-radius: 10px;
+      }
+      .card-content {
+        flex: 1;
+        padding: 20px;
+      }
+      .card-text {
+        color: #fff;
+        font-size: 20px;
+        line-height: 1.5em;
+        margin-bottom: 15px;
+      }
+      .btn-primary {
+        display: inline-block;
+        background: #e02626;
+        color: white;
+        padding: 12px 30px;
+        border-radius: 30px;
+        font-weight: bold;
+        text-decoration: none;
+        margin-top: 30px;
+        transition: background 0.3s;
+      }
+
+      .btn-primary-produk {
+        display: inline-block;
+        color: #000000;
+        padding: 12px 30px;
+        border: solid 3px #e02626;
+        font-weight: bold;
+        border-radius: 10px;
+        text-decoration: none;
+        transition: background 0.3s;
+      }
+      .btn-primary-produk:hover {
+        color: #ffffff;
+        background: #e02626;
+      }
+      .btn-primary:hover {
+        background: #b91c1c;
+      }
+      .why-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 40px;
+        text-align: center;
+      }
+      .why-grid img {
+        width: 100%;
+        border-radius: 10px;
+        margin-bottom: 15px;
+      }
+      .benefit-section {
+        text-align: center;
+      }
+      .benefit-section ul {
+        list-style: none;
+        padding: 0;
+        color: #ffffff;
+      }
+      .benefit-section li {
+        margin: 10px 0;
+        font-size: 20px;
+      }
+      .benefit-detail-style {
+        width: 90%;
+        margin: 10px auto 0;
+      }
+      .benefit-detail {
+        padding-top: 40px;
+      }
+      .des-style {
+        font-size: 14px;
+        font-style: italic;
+        text-align: left;
+      }
+      .pricing {
+        text-align: center;
+      }
+      .pricing-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 30px;
+        margin-top: 40px;
+      }
+      .price-card {
+        background: #ffffff;
+        padding: 30px;
+        border-radius: 20px;
+        box-shadow: 0 0 15px rgba(255, 255, 255, 0.05);
+      }
+      .price-card h3 {
+        color: #000000;
+        font-size: 22px;
+        margin-bottom: 10px;
+      }
+      .price-card p {
+        color: #000000;
+        margin-bottom: 20px;
+      }
+      .price-card .price {
+        font-size: 26px;
+        font-weight: bold;
+        margin-bottom: 15px;
+        margin-top: 0;
+      }
+      .price-coret {
+        font-size: 20px;
+        margin-bottom: 0 !important;
+        text-decoration: line-through;
+        color: #ff0000 !important;
+      }
+      .faq-section {
+        padding: 60px 20px;
+      }
+      .faq-item {
+        margin-bottom: 25px;
+      }
+      .faq-item h3 {
+        text-align: center;
+        font-size: 20px;
+        color: #fff;
+        margin-bottom: 8px;
+      }
+      .faq-item p {
+        text-align: center;
+        color: #ffffff;
+        margin: 0;
+        font-size: 20px;
+      }
+      .text-center-30 {
+        text-align: center;
+        font-size: 30px;
+        margin-bottom: 40px;
+      }
+      .text-center-28 {
+        text-align: center;
+        font-size: 28px;
+        margin-bottom: 40px;
+      }
+      .text-center-20 {
+        text-align: center;
+        font-size: 20px;
+        color: #ffffff;
+      }
+      .text-center-700 {
+        text-align: center;
+        font-size: 30px;
+        width: 70%;
+        margin: 10px auto 0;
+      }
+      footer {
+        text-align: center;
+        padding: 30px;
+        background: #000;
+        border-top: 1px solid #222;
+        color: #888;
+        font-size: 14px;
+      }
+      .logo-header {
+        margin-top: 40px;
+        margin-bottom: 80px;
+      }
+      .deskripsi {
+        padding: 60px 20px;
+      }
+
+      .deskripsi-text p {
+        text-align: center;
+        font-size: 20px;
+        color: #ffffff;
+        margin-bottom: 25px;
+        line-height: 1.7;
+      }
+      .price-card img {
+        width: -webkit-fill-available;
+      }
+      @media (max-width: 768px) {
+        .profit-grid {
+          grid-template-columns: repeat(2, 1fr);
+          gap: 15px;
+        }
+        .text-center-700 {
+          width: 100%;
+        }
+        header h1 {
+          font-size: 26px;
+        }
+
+        header {
+          padding: 60px 10px;
+        }
+        header img {
+          height: 30px;
+        }
+        header p {
+          font-size: 14px;
+        }
+        section {
+          padding: 20px 10px;
+        }
+        .text-center-700 {
+          font-size: 18px;
+        }
+        .btn-primary {
+          margin-top: 0px;
+        }
+        .text-center-30,
+        .text-center-28 {
+          font-size: 22px;
+        }
+        .card-content {
+          padding: 0px 10px;
+        }
+        .card-text,
+        .faq-item h3,
+        .faq-item p {
+          text-align: center;
+          font-size: 14px;
+        }
+        .card-row {
+          flex-direction: column;
+        }
+        .card-img {
+          order: -1;
+          padding: 0px 10px;
+        }
+        .benefit-detail {
+          padding-top: 0px;
+        }
+        .benefit-section li {
+          margin: 20px 0;
+          font-size: 14px;
+        }
+        .benefit-detail-style {
+          width: 100%;
+          margin: 4px auto 0;
+        }
+        .text-center-30 {
+          margin-bottom: 0px;
+        }
+        .faq-section {
+          padding: 60px 10px;
+        }
+        .deskripsi {
+          padding: 0px 10px;
+        }
+        .deskripsi-text p {
+          font-size: 14px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <div class="logo-header">
+        <img src="asset/Fitstock (5).webp" alt="FitStock Logo" />
+        <img src="asset/Fitstock (6).webp" alt="FitPost Logo" />
+      </div>
+      <h1>Cuan bareng Fitstock AI 🚀</h1>
+      <p>
+        Tools AI bantu kamu temukan saham potensial naik setiap hari, real-time
+        & akurat! Langsung dapet analisa otomatis dari sinyal beli sampai take
+        profit.
+      </p>
+    </header>
+
+    <section class="hero">
+      <img
+        src="https://dummyimage.com/800x400/000/fff&text=Fitstock+AI+Sahabat+Trader+Saham"
+        alt="Hero"
+      />
+      <h2 class="text-center-700">
+        Terbukti membantu member Profit sampai 1,068%+ dari saham dalam 100
+        Hari.
+      </h2>
+      <div class="profit-grid">
+        <img src="asset/Fitstock (12).webp" alt="Profit 6" />
+        <img src="asset/Fitstock (11).webp" alt="Profit 5" />
+        <img src="asset/Fitstock (10).webp" alt="Profit 4" />
+        <img src="asset/Fitstock (9).webp" alt="Profit 3" />
+        <img src="asset/Fitstock (8).webp" alt="Profit 2" />
+        <img src="asset/Fitstock (7).webp" alt="Profit 1" />
+      </div>
+      <div style="text-align: center">
+        <a href="#" class="btn-primary">Langganan Sekarang 🚀</a>
+      </div>
+    </section>
+
+    <section>
+      <h2 class="text-center-30">Why Fitstock AI?</h2>
+      <!-- Card 1 -->
+      <div class="custom-card">
+        <div class="card-row">
+          <div class="card-content">
+            <p class="card-text">
+              <b>Rekomendasi Saham Real-Time & Akurat</b> Fitstock AI pantau
+              ratusan saham dengan machine learning. Fitstock mendeteksi saham
+              potensial naik lebih cepat dari investor ritel. Kamu mendapatkan
+              sinyal beli, harga masuk, serta rekomendasi waktu terbaik untuk
+              Take Profit dan Stop Loss.
+            </p>
+          </div>
+          <div class="card-img">
+            <img src="asset/Fitstock (14).webp" alt="Card image" />
+          </div>
+        </div>
+      </div>
+      <!-- Card 2 -->
+      <div class="custom-card">
+        <div class="card-row">
+          <div class="card-img">
+            <img src="asset/Fitstock (15).webp" alt="Card image" />
+          </div>
+          <div class="card-content">
+            <p class="card-text">
+              <b>Analisis Otomatis yang Lengkap & Terarah</b> Fitstock
+              memberikan analisa lengkap dalam satu dashboard: trend mingguan,
+              broker summary, dan risk reward ratio. Data ini membuat keputusan
+              investasi lebih percaya diri, tanpa harus pusing analisa manual.
+            </p>
+          </div>
+        </div>
+      </div>
+      <!-- Card 3 -->
+      <div class="custom-card">
+        <div class="card-row">
+          <div class="card-content">
+            <p class="card-text">
+              <b>Dikembangkan Tim Riset & Ahli Pasar Modal</b> AI Fitstock
+              dikembangkan oleh tim riset profesional di bidang data science dan
+              pasar modal. Algoritma terus diperbarui agar hasil analisa selalu
+              akurat dan relevan dengan kondisi market terkini, bukan sekadar
+              spekulasi.
+            </p>
+          </div>
+          <div class="card-img">
+            <img src="asset/Fitstock (16).webp" alt="Card image" />
+          </div>
+        </div>
+      </div>
+      <!-- Card 4 -->
+      <div class="custom-card">
+        <div class="card-row">
+          <div class="card-img">
+            <img src="asset/Fitstock (17).webp" alt="Card image" />
+          </div>
+          <div class="card-content">
+            <p class="card-text">
+              <b>Komunitas & Bimbingan dari Expert Coach</b> Fitstock punya
+              forum eksklusif untuk diskusi antar trader dan belajar langsung
+              dari expert coach. Kamu nggak cuma “ikut sinyal”, tapi juga paham
+              alasan di balik setiap rekomendasi yang muncul.
+            </p>
+          </div>
+        </div>
+      </div>
+      <div style="text-align: center">
+        <a href="#" class="btn-primary">Langganan Sekarang 🚀</a>
+      </div>
+    </section>
+
+    <section class="benefit-section">
+      <h2 class="text-center-30">Benefit Fitstock AI</h2>
+      <ul>
+        <li class="benefit-detail">
+          <b> Morning Stock Setiap Hari </b>
+          <p class="benefit-detail-style">
+            Setiap pagi kamu udah dapet insight eksklusif langsung dari tim
+            Fitstock tentang saham-saham potensial terbaru.
+          </p>
+        </li>
+        <li class="benefit-detail">
+          <b> Live Trading Bareng Expert Coach </b>
+          <p class="benefit-detail-style">
+            Belajar dan praktik langsung bareng coach expert. Kamu bisa tau cara
+            baca sinyal, nentuin entry point, sampai strategi. Fitstock juga
+            sering ada sesi malam hari khusus buat pekerja yang sibuk di siang
+            hari.
+          </p>
+        </li>
+        <li class="benefit-detail">
+          <b> Full Course (Bedah Portofolio by Appointment) </b>
+          <p class="benefit-detail-style">
+            Konsultasi langsung dengan tim Fitstock untuk bedah portofolio
+            pribadi! Pelajari strategi trading dan manajemen risiko berdasarkan
+            kondisi saham yang kamu pegang.
+          </p>
+        </li>
+        <li class="benefit-detail">
+          <b> Stock Call (Kupas Saham Menarik Secara Eksklusif) </b>
+          <p class="benefit-detail-style">
+            Ketika ada saham yang menarik, tim Fitstock akan mengadakan sesi
+            untuk membedah potensi pergerakannya. Membahas dari sisi teknikal,
+            sentimen, dan strategi entry-exit.
+          </p>
+        </li>
+        <li class="benefit-detail">
+          <b> News Update yang Berdampak pada Saham </b>
+          <p class="benefit-detail-style">
+            Fitstock selalu update berita terbaru yang berpengaruh kepada harga
+            saham. Kamu nggak perlu cari informasi ke mana-mana, semua udah
+            dirangkum dan disajikan langsung di Fitstock.
+          </p>
+        </li>
+      </ul>
+      <a href="#" class="btn-primary">Langganan Sekarang 🚀</a>
+    </section>
+
+    <section class="pricing">
+      <h2 class="text-center-30">Choose Your Package</h2>
+      <p class="benefit-detail-style">
+        Rasakan kemudahan cari cuan bareng Fitstock! Biarkan AI bantu kamu
+        temukan peluang saham terbaik!
+      </p>
+      <div class="pricing-grid">
+        <div class="price-card">
+          <h3>1 Bulan</h3>
+          <p>Fitstock Invest Universe AI, Swing Motion AI, Scalper AI.</p>
+          <p class="price-coret">Rp 5.000.000</p>
+          <p class="price">Rp 1.500.000</p>
+          <a href="#" class="btn-primary-produk">Ambil Paket</a>
+          <p class="des-style">Pembayaran menggunakan payment gateway Xendit</p>
+          <img src="asset/Fitstock (18).webp" alt="payment" />
+        </div>
+        <div class="price-card highlight">
+          <h3>6 Bulan</h3>
+          <p>Fitstock Invest Universe AI, Swing Motion AI, Scalper AI.</p>
+          <p class="price-coret">Rp 30.000.000</p>
+          <p class="price">Rp 8.500.000</p>
+          <a href="#" class="btn-primary-produk">Ambil Paket</a>
+          <p class="des-style">Pembayaran menggunakan payment gateway Xendit</p>
+          <img src="asset/Fitstock (18).webp" alt="payment" />
+        </div>
+        <div class="price-card">
+          <h3>12 Bulan</h3>
+          <p>Fitstock Invest Universe AI, Swing Motion AI, Scalper AI.</p>
+          <p class="price-coret">Rp 60.000.000</p>
+          <p class="price">Rp 14.000.000</p>
+          <a href="#" class="btn-primary-produk">Ambil Paket</a>
+          <p class="des-style">Pembayaran menggunakan payment gateway Xendit</p>
+          <img src="asset/Fitstock (18).webp" alt="payment" />
+        </div>
+      </div>
+    </section>
+
+    <section class="faq-section">
+      <h2 class="text-center-28">FAQ (Frequently Asked Questions)</h2>
+      <div class="faq-item">
+        <h3>Apa itu FITSTOCK AI?</h3>
+        <p>
+          Fitstock adalah platform analisis saham berbasis kecerdasan buatan
+          (AI) yang membantu kamu memangkas waktu riset dan analisa pasar.
+          Dengan algoritma pintar yang bekerja real-time, Fitstock memberikan
+          sinyal teknikal otomatis berdasarkan pergerakan harga saham.
+          Tujuannya? Membantu memantau saham pilihan, serta menentukan kapan
+          waktu terbaik untuk membeli atau menjual tanpa harus bingung membaca
+          grafik yang rumit.
+        </p>
+      </div>
+      <div class="faq-item">
+        <h3>Apakah Fitstock bisa digunakan oleh pemula?</h3>
+        <p>
+          Ya, tentu! Fitstock dirancang agar mudah digunakan oleh siapa pun,
+          baik kamu yang baru mulai belajar saham maupun investor berpengalaman.
+          Semua fitur disusun dengan tampilan yang sederhana dan panduan yang
+          jelas, jadi kamu bisa langsung memahami analisis AI tanpa bingung.
+        </p>
+      </div>
+      <div class="faq-item">
+        <h3>
+          Apakah saya perlu pengetahuan teknis untuk menggunakan Fitstock?
+        </h3>
+        <p>
+          Tidak perlu. Fitstock dibuat dengan proses yang simpel dan intuitif,
+          tanpa perlu kemampuan teknis atau pengalaman analisis yang rumit.
+          Cukup ikuti panduan dan rekomendasi dari sistem, dan kamu bisa
+          langsung memanfaatkannya untuk pengambilan keputusan investasi.
+        </p>
+      </div>
+      <div class="faq-item">
+        <h3>Apakah Fitstock termasuk stockpick?</h3>
+        <p>
+          Ya. Fitstock menyediakan rekomendasi saham otomatis yang disesuaikan
+          dengan target jangka pendek maupun jangka panjang kamu. Semua
+          rekomendasi dihasilkan dari perhitungan algoritma pintar berbasis AI,
+          yang terus diperbarui mengikuti kondisi pasar terkini.
+        </p>
+      </div>
+      <div class="faq-item">
+        <h3>Apakah Fitstock menjamin keuntungan?</h3>
+        <p>
+          Tidak. Fitstock dan The Fitpost tidak menjanjikan keuntungan atau
+          melakukan pengelolaan dana investor. Semua keputusan jual/beli saham
+          tetap menjadi tanggung jawab masing-masing pengguna. Gunakan Fitstock
+          sebagai alat bantu analisis dan pertimbangan investasi, dan selalu
+          lakukan riset tambahan sebelum mengambil keputusan.
+        </p>
+      </div>
+    </section>
+
+    <section class="deskripsi">
+      <div class="deskripsi-text">
+        <p>
+          Konten dalam situs web FITStock mungkin memuat iklan, dan iklan
+          tersebut belum ditinjau oleh Otoritas Jasa Keuangan (OJK). Setiap
+          konten dalam situs web ini atau situs web/aplikasi afiliasi kami bukan
+          merupakan rekomendasi atau ajakan untuk membeli atau menjual efek,
+          derivatif, atau produk investasi lainnya. Semua informasi dan data
+          dalam situs web ini hanya untuk referensi saja dan setiap data
+          historis yang terkandung di dalamnya tidak boleh dianggap sebagai
+          dasar untuk memprediksi tren masa depan. Investor harus memahami bahwa
+          respons sistem, harga eksekusi, kecepatan, likuiditas, data pasar, dan
+          waktu akses akun dipengaruhi oleh banyak faktor, termasuk volatilitas
+          pasar, ukuran dan jenis order, kondisi pasar, kinerja sistem, dan
+          faktor lainnya. Informasi yang diberikan di sini hanya untuk referensi
+          saja, kecuali dinyatakan lain. Distribusi produk investasi maupun
+          penawaran layanan kepada siapa pun tidak dimaksudkan untuk ditujukan
+          di yurisdiksi mana pun dimana distribusi atau penggunaan layanan
+          tersebut akan bertentangan dengan undang-undang atau peraturan yang
+          berlaku. Layanan hanya ditujukan untuk orang-orang di yurisdiksi atau
+          negara dimana orang-orang tersebut sah untuk menerimanya.
+        </p>
+
+        <p>
+          Semua investasi memiliki risiko dan tidak selalu cocok untuk setiap
+          investor. Nilai efek dapat berfluktuasi dan oleh karena itu, klien
+          dapat mengalami kerugian yang lebih besar dari nilai investasi awal
+          mereka. Perdagangan margin meningkatkan risiko kerugian dan kerugian
+          klien dapat melebihi deposit yang mereka tempatkan. Kinerja masa lalu
+          dari suatu efek atau produk keuangan tidak menjamin pencapaian hasil
+          atau keuntungan di masa mendatang. Ingat bahwa meskipun diversifikasi
+          dapat membantu menyebarkan risiko, namun tidak menjamin perolehan
+          keuntungan atau melindungi Anda dari kerugian pada saat pasar turun.
+          Potensi kehilangan uang saat Anda berinvestasi di suatu efek atau
+          produk keuangan lainnya selalu terjadi. Investor harus
+          mempertimbangkan tujuan dan risiko investasi mereka dengan hati-hati
+          sebelum berinvestasi.
+        </p>
+
+        <p>
+          Perlu diperhatikan bahwa informasi apapun yang ada dalam situs web ini
+          tidak boleh disalin, dimodifikasi, dipublikasikan, didistribusikan,
+          atau direproduksi baik seluruhnya atau sebagian tanpa persetujuan
+          tertulis sebelumnya dari FITStock. Jika ada hyperlink yang tersedia
+          untuk situs web/aplikasi pihak ketiga, hyperlink tersebut tidak ada
+          kaitannya dengan FITStock dan risiko apapun yang timbul dari
+          penggunaan link tersebut adalah tanggung jawab Anda. FITStock tidak
+          bertanggung jawab atas kerugian atau kerusakan apapun yang disebabkan
+          oleh penggunaan atau ketergantungan pada konten, barang, atau layanan
+          yang tersedia di situs web/aplikasi pihak ketiga manapun.
+        </p>
+
+        <p>
+          Konten di situs web FITStock dapat diterjemahkan ke dalam bahasa lain.
+          Apabila terjemahan ke bahasa lain, versi Bahasa Indonesia yang akan
+          berlaku. Jika ada ketidaksesuaian antara versi Bahasa Indonesia dan
+          versi bahasa lain dari konten apa pun, maka versi Bahasa Indonesia
+          yang akan berlaku.
+        </p>
+      </div>
+    </section>
+
+    <footer>
+      <p>© 2025 Fitstock AI. All Rights Reserved.</p>
+    </footer>
+  </body>
+</html>
