@@ -37,7 +37,7 @@
         margin: 10px auto 0;
       }
       section {
-        padding: 40px 20px 0px 20px;
+        padding: 60px 20px 60px 20px;
         max-width: 1100px;
         margin: auto;
       }
@@ -105,7 +105,8 @@
         color: #fff;
         font-size: 20px;
         line-height: 1.5em;
-        margin-bottom: 15px;
+        margin-bottom: 10px;
+        margin-top: 10px;
       }
       .btn-primary {
         display: inline-block;
@@ -209,21 +210,140 @@
       }
       .faq-section {
         padding: 60px 20px;
+        max-width: 800px;
+        margin: 0 auto;
       }
+
+      .faq-title {
+        text-align: center;
+        font-size: 32px;
+        font-weight: 700;
+        color: #ffffff;
+        margin-bottom: 50px;
+      }
+
+      /* Accordion container */
       .faq-item {
         margin-bottom: 25px;
+        border-radius: 10px;
+        overflow: hidden;
+        background: #1a1a1a;
+        box-shadow: 0 4px 10px rgba(255, 255, 255, 0.05);
       }
-      .faq-item h3 {
-        text-align: center;
+
+      input[type="checkbox"] {
+        display: none;
+      }
+
+      /* Question button */
+      .faq-question {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        cursor: pointer;
+        background: #222;
+        color: #ffffff;
         font-size: 20px;
-        color: #fff;
-        margin-bottom: 8px;
+        font-weight: 600;
+        padding: 18px 25px;
+        transition: background 0.3s ease;
+        position: relative;
       }
-      .faq-item p {
+
+      .faq-question:hover {
+        background: #333;
+      }
+
+      /* Icon container */
+      .faq-icon {
+        width: 24px;
+        height: 24px;
+        position: relative;
+        flex-shrink: 0;
+        transition: transform 0.3s ease;
+      }
+
+      /* Plus icon (two lines) */
+      .faq-icon::before,
+      .faq-icon::after {
+        content: "";
+        position: absolute;
+        background-color: #fff;
+        border-radius: 2px;
+        transition: transform 0.3s ease, opacity 0.3s ease;
+      }
+
+      .faq-icon::before {
+        width: 100%;
+        height: 3px;
+        top: 50%;
+        left: 0;
+        transform: translateY(-50%);
+      }
+
+      .faq-icon::after {
+        width: 3px;
+        height: 100%;
+        top: 0;
+        left: 50%;
+        transform: translateX(-50%);
+      }
+
+      /* Saat aktif (jadi tanda minus) */
+      input[type="checkbox"]:checked + .faq-question .faq-icon::after {
+        transform: scaleY(0);
+        opacity: 0;
+      }
+
+      input[type="checkbox"]:checked + .faq-question .faq-icon {
+        transform: rotate(180deg);
+      }
+
+      /* Jawaban (animasi buka tutup halus) */
+      .faq-answer {
+        max-height: 0;
+        overflow: hidden;
+        padding: 0 25px;
         text-align: center;
         color: #ffffff;
-        margin: 0;
-        font-size: 20px;
+        font-size: 18px;
+        line-height: 1.6;
+        background: #111;
+        transition: all 0.4s ease;
+        opacity: 0;
+      }
+
+      input[type="checkbox"]:checked + .faq-question + .faq-answer {
+        padding: 20px 25px 25px;
+        max-height: 500px; /* cukup tinggi untuk teks panjang */
+        opacity: 1;
+      }
+
+      /* Smooth fade-in */
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+          transform: translateY(-5px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+      .price-card.color {
+        background: #740000 !important;
+      }
+      .price-card.color h3,
+      .price-card.color p {
+        color: #ffff !important;
+      }
+      .price-card.color a.btn-primary-produk {
+        border: solid 3px #ffffff !important;
+        color: #ffffff !important;
+      }
+      .price-card.color a.btn-primary-produk:hover {
+        background: white;
+        color: #e02626;
       }
       .text-center-30 {
         text-align: center;
@@ -345,6 +465,15 @@
         .deskripsi-text p {
           font-size: 14px;
         }
+        input[type="checkbox"]:checked + .faq-question + .faq-answer {
+          padding: 10px 10px 20px;
+        }
+        .faq-question {
+          font-size: 16px;
+        }
+        .faq-answer {
+          font-size: 14px;
+        }
       }
     </style>
   </head>
@@ -391,11 +520,13 @@
         <div class="card-row">
           <div class="card-content">
             <p class="card-text">
-              <b>Rekomendasi Saham Real-Time & Akurat</b> Fitstock AI pantau
-              ratusan saham dengan machine learning. Fitstock mendeteksi saham
-              potensial naik lebih cepat dari investor ritel. Kamu mendapatkan
-              sinyal beli, harga masuk, serta rekomendasi waktu terbaik untuk
-              Take Profit dan Stop Loss.
+              <b>Rekomendasi Saham Real-Time & Akurat</b>
+            </p>
+            <p class="card-text">
+              Fitstock AI pantau ratusan saham dengan machine learning. Fitstock
+              mendeteksi saham potensial naik lebih cepat dari investor ritel.
+              Kamu mendapatkan sinyal beli, harga masuk, serta rekomendasi waktu
+              terbaik untuk Take Profit dan Stop Loss.
             </p>
           </div>
           <div class="card-img">
@@ -411,10 +542,13 @@
           </div>
           <div class="card-content">
             <p class="card-text">
-              <b>Analisis Otomatis yang Lengkap & Terarah</b> Fitstock
-              memberikan analisa lengkap dalam satu dashboard: trend mingguan,
-              broker summary, dan risk reward ratio. Data ini membuat keputusan
-              investasi lebih percaya diri, tanpa harus pusing analisa manual.
+              <b>Analisis Otomatis yang Lengkap & Terarah</b>
+            </p>
+            <p class="card-text">
+              Fitstock memberikan analisa lengkap dalam satu dashboard: trend
+              mingguan, broker summary, dan risk reward ratio. Data ini membuat
+              keputusan investasi lebih percaya diri, tanpa harus pusing analisa
+              manual.
             </p>
           </div>
         </div>
@@ -424,11 +558,13 @@
         <div class="card-row">
           <div class="card-content">
             <p class="card-text">
-              <b>Dikembangkan Tim Riset & Ahli Pasar Modal</b> AI Fitstock
-              dikembangkan oleh tim riset profesional di bidang data science dan
-              pasar modal. Algoritma terus diperbarui agar hasil analisa selalu
-              akurat dan relevan dengan kondisi market terkini, bukan sekadar
-              spekulasi.
+              <b>Dikembangkan Tim Riset & Ahli Pasar Modal</b>
+            </p>
+            <p class="card-text">
+              AI Fitstock dikembangkan oleh tim riset profesional di bidang data
+              science dan pasar modal. Algoritma terus diperbarui agar hasil
+              analisa selalu akurat dan relevan dengan kondisi market terkini,
+              bukan sekadar spekulasi.
             </p>
           </div>
           <div class="card-img">
@@ -444,10 +580,12 @@
           </div>
           <div class="card-content">
             <p class="card-text">
-              <b>Komunitas & Bimbingan dari Expert Coach</b> Fitstock punya
-              forum eksklusif untuk diskusi antar trader dan belajar langsung
-              dari expert coach. Kamu nggak cuma “ikut sinyal”, tapi juga paham
-              alasan di balik setiap rekomendasi yang muncul.
+              <b>Komunitas & Bimbingan dari Expert Coach</b>
+            </p>
+            <p class="card-text">
+              Fitstock punya forum eksklusif untuk diskusi antar trader dan
+              belajar langsung dari expert coach. Kamu nggak cuma “ikut sinyal”,
+              tapi juga paham alasan di balik setiap rekomendasi yang muncul.
             </p>
           </div>
         </div>
@@ -516,7 +654,7 @@
           <p>Fitstock Invest Universe AI, Swing Motion AI, Scalper AI.</p>
           <p class="price-coret">Rp 5.000.000</p>
           <p class="price">Rp 1.500.000</p>
-          <a href="#" class="btn-primary-produk">Ambil Paket</a>
+          <a href="#" class="btn-primary-produk">Langganan Sekarang</a>
           <p class="des-style">Pembayaran menggunakan payment gateway Xendit</p>
           <img src="asset/Fitstock (18).webp" alt="payment" />
         </div>
@@ -525,16 +663,16 @@
           <p>Fitstock Invest Universe AI, Swing Motion AI, Scalper AI.</p>
           <p class="price-coret">Rp 30.000.000</p>
           <p class="price">Rp 8.500.000</p>
-          <a href="#" class="btn-primary-produk">Ambil Paket</a>
+          <a href="#" class="btn-primary-produk">Langganan Sekarang</a>
           <p class="des-style">Pembayaran menggunakan payment gateway Xendit</p>
           <img src="asset/Fitstock (18).webp" alt="payment" />
         </div>
-        <div class="price-card">
+        <div class="price-card color">
           <h3>12 Bulan</h3>
           <p>Fitstock Invest Universe AI, Swing Motion AI, Scalper AI.</p>
           <p class="price-coret">Rp 60.000.000</p>
           <p class="price">Rp 14.000.000</p>
-          <a href="#" class="btn-primary-produk">Ambil Paket</a>
+          <a href="#" class="btn-primary-produk">Langganan Sekarang</a>
           <p class="des-style">Pembayaran menggunakan payment gateway Xendit</p>
           <img src="asset/Fitstock (18).webp" alt="payment" />
         </div>
@@ -542,57 +680,73 @@
     </section>
 
     <section class="faq-section">
-      <h2 class="text-center-28">FAQ (Frequently Asked Questions)</h2>
+      <h2 class="faq-title">FAQ (Frequently Asked Questions)</h2>
+
       <div class="faq-item">
-        <h3>Apa itu FITSTOCK AI?</h3>
-        <p>
+        <input type="checkbox" id="faq1" />
+        <label class="faq-question" for="faq1">
+          <span>Apa itu FITSTOCK AI?</span>
+          <span class="faq-icon"></span>
+        </label>
+        <div class="faq-answer">
           Fitstock adalah platform analisis saham berbasis kecerdasan buatan
           (AI) yang membantu kamu memangkas waktu riset dan analisa pasar.
           Dengan algoritma pintar yang bekerja real-time, Fitstock memberikan
           sinyal teknikal otomatis berdasarkan pergerakan harga saham.
-          Tujuannya? Membantu memantau saham pilihan, serta menentukan kapan
-          waktu terbaik untuk membeli atau menjual tanpa harus bingung membaca
-          grafik yang rumit.
-        </p>
+        </div>
       </div>
+
       <div class="faq-item">
-        <h3>Apakah Fitstock bisa digunakan oleh pemula?</h3>
-        <p>
+        <input type="checkbox" id="faq2" />
+        <label class="faq-question" for="faq2">
+          <span>Apakah Fitstock bisa digunakan oleh pemula?</span>
+          <span class="faq-icon"></span>
+        </label>
+        <div class="faq-answer">
           Ya, tentu! Fitstock dirancang agar mudah digunakan oleh siapa pun,
           baik kamu yang baru mulai belajar saham maupun investor berpengalaman.
-          Semua fitur disusun dengan tampilan yang sederhana dan panduan yang
-          jelas, jadi kamu bisa langsung memahami analisis AI tanpa bingung.
-        </p>
+          Semua fitur disusun dengan tampilan sederhana dan panduan yang jelas.
+        </div>
       </div>
+
       <div class="faq-item">
-        <h3>
-          Apakah saya perlu pengetahuan teknis untuk menggunakan Fitstock?
-        </h3>
-        <p>
+        <input type="checkbox" id="faq3" />
+        <label class="faq-question" for="faq3">
+          <span
+            >Apakah saya perlu pengetahuan teknis untuk menggunakan
+            Fitstock?</span
+          >
+          <span class="faq-icon"></span>
+        </label>
+        <div class="faq-answer">
           Tidak perlu. Fitstock dibuat dengan proses yang simpel dan intuitif,
           tanpa perlu kemampuan teknis atau pengalaman analisis yang rumit.
-          Cukup ikuti panduan dan rekomendasi dari sistem, dan kamu bisa
-          langsung memanfaatkannya untuk pengambilan keputusan investasi.
-        </p>
+        </div>
       </div>
+
       <div class="faq-item">
-        <h3>Apakah Fitstock termasuk stockpick?</h3>
-        <p>
+        <input type="checkbox" id="faq4" />
+        <label class="faq-question" for="faq4">
+          <span>Apakah Fitstock termasuk stockpick?</span>
+          <span class="faq-icon"></span>
+        </label>
+        <div class="faq-answer">
           Ya. Fitstock menyediakan rekomendasi saham otomatis yang disesuaikan
-          dengan target jangka pendek maupun jangka panjang kamu. Semua
-          rekomendasi dihasilkan dari perhitungan algoritma pintar berbasis AI,
-          yang terus diperbarui mengikuti kondisi pasar terkini.
-        </p>
+          dengan target jangka pendek maupun jangka panjang kamu.
+        </div>
       </div>
+
       <div class="faq-item">
-        <h3>Apakah Fitstock menjamin keuntungan?</h3>
-        <p>
+        <input type="checkbox" id="faq5" />
+        <label class="faq-question" for="faq5">
+          <span>Apakah Fitstock menjamin keuntungan?</span>
+          <span class="faq-icon"></span>
+        </label>
+        <div class="faq-answer">
           Tidak. Fitstock dan The Fitpost tidak menjanjikan keuntungan atau
           melakukan pengelolaan dana investor. Semua keputusan jual/beli saham
-          tetap menjadi tanggung jawab masing-masing pengguna. Gunakan Fitstock
-          sebagai alat bantu analisis dan pertimbangan investasi, dan selalu
-          lakukan riset tambahan sebelum mengambil keputusan.
-        </p>
+          tetap menjadi tanggung jawab pengguna.
+        </div>
       </div>
     </section>
 
